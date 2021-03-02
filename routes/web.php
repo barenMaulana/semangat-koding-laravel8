@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\ClassController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,4 @@ use App\Http\Controllers\AppController;
 */
 
 Route::get('/', [AppController::class, 'index']);
+Route::get('/kelas', [ClassController::class, 'index']);

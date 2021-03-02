@@ -1,6 +1,5 @@
 @extends('layouts/App')
 @section('content')
-<section class="py-0" id="home">
     <div class="bg-holder d-none d-sm-block"
       style="background-image:url({{url("/frontend/public/assets/img/illustrations/hero-bg.png")}});background-position:right top;background-size:contain;">
     </div>
@@ -676,5 +675,4 @@
         </div>
       </div>
     </div>
-  </section> 
 @endsection

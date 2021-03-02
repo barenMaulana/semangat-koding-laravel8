@@ -41,7 +41,9 @@
       </div>
     </nav>
 
-   @yield('content')
+    <section class="py-0" id="home">
+      @yield('content')
+    </section> 
 
     <!-- footer -->
     <section class="py-0 bg-primary-gradient">
