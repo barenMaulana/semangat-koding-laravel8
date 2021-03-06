@@ -34,7 +34,13 @@
             <li class="nav-item px-2"><a class="nav-link fw-medium" href="{{ url('/kelas') }}">Kelas</a></li>
             <li class="nav-item px-2"><a class="nav-link fw-medium" href="{{ url('/rekomendasi') }}">Rekomendasi</a></li>
           </ul>
-            <a href="{{ url('/login') }}" class="btn btn-lg btn-warning rounded-pill bg-gradient order-0" type="submit">Masuk</a>
+          @guest
+            <a href="{{ url('/login') }}" class="btn btn-lg btn-info rounded-pill bg-gradient order-0" type="submit">Masuk</a>&nbsp;
+            <a href="{{ url('/register') }}" class="btn btn-lg btn-warning rounded-pill bg-gradient order-0" type="submit">Daftar</a>
+          @endguest
+          @auth
+            <a href="{{ url('/dashboard') }}" class="btn btn-lg btn-info rounded-pill bg-gradient order-0" type="submit">dashboard</a>&nbsp;
+          @endauth
         </div>
       </div>
     </nav>

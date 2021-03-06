@@ -19,7 +19,7 @@
             </div>
 
             <div class="flex justify-end mt-4">
-                <x-jet-button class="ml-4">
+                <x-jet-button class="ml-4 bg-gradient-to-r from-green-400 to-blue-500 hover:from-blue-500 hover:to-green-500">
                     {{ __('Confirm') }}
                 </x-jet-button>
             </div>

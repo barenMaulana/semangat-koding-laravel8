@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img src="{{ url("/frontend/public/assets/img/icons/logo-semangat-koding.png") }}" alt="semangat koding" class="rounded-lg m-auto" width="100">
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
@@ -25,7 +25,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-jet-button>
+                <x-jet-button class="bg-gradient-to-r from-green-400 to-blue-500 hover:from-blue-500 hover:to-green-500">
                     {{ __('Email Password Reset Link') }}
                 </x-jet-button>
             </div>

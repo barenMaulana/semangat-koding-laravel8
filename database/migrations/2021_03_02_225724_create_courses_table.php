@@ -18,7 +18,7 @@ class CreateCoursesTable extends Migration
             $table->char("title");
             $table->integer("price");
             $table->text("description");
-            $table->char("buid_with");
+            $table->char("build_with");
             $table->boolean("consultation");
             $table->boolean('certificate');
             $table->char('type');
