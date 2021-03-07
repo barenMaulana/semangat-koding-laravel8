@@ -1,12 +1,12 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Courses
+            Users
         </h2>
     </x-slot>
 
     @if ($deleteId)
-        <div class="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
+    <div class="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-white rounded shadow-lg w-1/3">
           <div class="border-b px-4 py-2 flex justify-between items-center">
             <h3 class="font-semibold text-lg">Delete this course?</h3>
@@ -42,9 +42,8 @@
                     </div>
                 @endif
 
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" id="navigationForMultipleDelete">
-                    <button wire:click="create()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Add Course</button>
-                    <input wire:model="search" class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="search" name="search" placeholder="Search by title">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-5" id="navigationForMultipleDelete">
+                    <input wire:model="search" class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="search" name="search" placeholder="Search by email">
                     <button class="bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3 hidden" id="okButton">Ok</button>
                     <button wire:click="multipleDelete()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-3 hidden" id="multipleDeleteButton">Delete</button>
                     <div class="inline-block">
@@ -57,7 +56,7 @@
                     </div>
                 </div>
                 @if($isModal)
-                    @include('livewire.course.create')
+                    @include('livewire.user.create')
                 @endif
 
                 <div class="pb-12">
@@ -68,30 +67,30 @@
                                         <table class="min-w-max w-full table-auto">
                                             <thead>
                                                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                                    <th class="py-3 px-6 text-left">Course</th>
-                                                    <th class="py-3 px-6 text-left">Mentors</th>
-                                                    <th class="py-3 px-6 text-center">Access</th>
+                                                    <th class="py-3 px-6 text-left">Name</th>
+                                                    <th class="py-3 px-6 text-left">Email</th>
+                                                    <th class="py-3 px-6 text-center">role</th>
                                                     <th class="py-3 px-6 text-center">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="text-gray-600 text-sm font-light">
-                                                @forelse($posts as $row)
+                                                @forelse($users as $row)
                                                     <tr class="border-b border-gray-200 hover:bg-gray-100">
                                                         <td class="py-3 px-6 text-left whitespace-nowrap">
                                                             <div class="flex items-center">
                                                                 <div class="mr-2">
-                                                                    <img src="{{asset('storage/'.$row->thumbnail_file_name)}}" alt="." width="24">
+                                                                    <img src="{{asset('storage/'.$row->profile_photo_path)}}" alt="." width="24">
                                                                 </div>
-                                                                <span class="font-medium">{{$row->title}}</span>
+                                                                <span class="font-medium">{{$row->name}}</span>
                                                             </div>
                                                         </td>
                                                         <td class="py-3 px-6 text-left">
                                                             <div class="flex items-center">
-                                                                <span>{{$row->build_with}}</span>
+                                                                <span>{{$row->email}}</span>
                                                             </div>
                                                         </td>
                                                         <td class="py-3 px-6 text-center">
-                                                            <span class="bg-gradient-to-r from-green-400 to-blue-500 text-white py-1 px-3 rounded-full text-xs">{{$row->type}}</span>
+                                                            <span class="bg-gradient-to-r from-green-400 to-blue-500 text-white py-1 px-3 rounded-full text-xs">{{$row->role}}</span>
                                                         </td>
                                                         <td class="py-3 px-6 text-center">
                                                             <div class="flex item-center justify-center">
@@ -117,7 +116,7 @@
                                             </tbody>
                                         </table>
                                         <div class="py-5">
-                                            {{ $posts->links() }}
+                                            {{ $users->links() }}
                                         </div>
                                     </main>
                                 </div>
