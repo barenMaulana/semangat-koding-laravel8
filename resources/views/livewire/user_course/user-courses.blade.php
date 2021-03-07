@@ -4,11 +4,7 @@
             Course Access
         </h2>
     </x-slot>
-
-    @if($isModal)
-        @include('livewire.user_course.modal')
-    @endif
-
+    
     @if ($deleteId)
     <div class="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
         <div class="bg-white rounded shadow-lg w-1/3">
@@ -20,17 +16,11 @@
             <button wire:click="delete({{$deleteId}})" class="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white">Oke</button>
           </div>
         </div>
-      </div>
-      
-      <script>
-        const modal = document.querySelector('.modal');
-        const closeModal = document.querySelectorAll('.close-modal');
-        closeModal.forEach(close => {
-          close.addEventListener('click', function (){
-            modal.classList.add('hidden')
-          });
-        });
-      </script>
+    </div>
+    @endif
+
+    @if($isModal)
+        @include('livewire.user_course.modal')
     @endif
 
     <div class="py-12">
@@ -207,5 +197,13 @@
                 return ele != value; 
             });
         }
+
+        const modal = document.querySelector('.modal');
+            const closeModal = document.querySelectorAll('.close-modal');
+            closeModal.forEach(close => {
+            close.addEventListener('click', function (){
+            modal.classList.add('hidden')
+        });
+    });
     </script>
 </div>
