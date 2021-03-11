@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\CourseVideo;
 
 class Course extends Model
 {
@@ -29,4 +30,9 @@ class Course extends Model
         'slug',
         'thumbnail_file_name'
     ];
+
+    public function courseVideo()
+    {
+        return $this->hasOne(CourseVideo::class,'course_title','slug');
+    }
 }

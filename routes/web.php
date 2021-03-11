@@ -31,5 +31,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/course-videos',CourseVideos::class)->name('course-videos');
     Route::get('/user',Users::class)->name('user');
     Route::get('/access',UserCourses::class)->name('access');
-    Route::get('/playing-videos/{post}',PlayingVideos::class);
+    Route::get('/playing-videos/{post}/{id?}',PlayingVideos::class);
 });

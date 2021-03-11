@@ -3,6 +3,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Course;
+use Illuminate\Support\Str;
 use App\Models\CourseVideo;
 use Livewire\WithPagination;
 
@@ -80,6 +81,8 @@ class CourseVideos extends Component
         }else{
             session()->flash('errMessage', "please input data correctly!");
         }
+        
+        $this->courseTitle = Str::slug($this->courseTitle,'-');
 
         $pesan = $this->isPlaylist($this->courseId);
         if($pesan == ""){

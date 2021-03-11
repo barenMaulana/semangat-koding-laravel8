@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Course;
 
 class CourseVideo extends Model
 {
@@ -18,4 +19,9 @@ class CourseVideo extends Model
         'trailerId',
         'course_title'
     ]; 
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class,'slug','course_title');
+    }
 }
