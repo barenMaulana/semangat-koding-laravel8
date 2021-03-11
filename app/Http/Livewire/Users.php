@@ -31,10 +31,14 @@ class Users extends Component
 
     public function render()
     {
-        $users = User::latest()->simplePaginate(10);
+        $users = User::where('role','user')
+        ->orWhere('role','mentor')
+        ->simplePaginate(10);
 
         if ($this->search !== null) {
             $users = User::where('email', 'like', '%' . $this->search . '%')
+                            ->where('role','=','user')
+                            ->orWhere('role','=','mentor')
                             ->latest()
                             ->simplePaginate(10);
         }

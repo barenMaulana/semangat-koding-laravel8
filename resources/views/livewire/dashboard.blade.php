@@ -18,7 +18,7 @@
                                                 Students
                                             </p>
                                             <p class="no-underline text-white text-lg">
-                                                204
+                                                {{$studentTotal}}
                                             </p>
                                         </div>
                                     </div>
@@ -29,7 +29,7 @@
                                                 Courses
                                             </a>
                                             <a href="#" class="no-underline text-white text-lg">
-                                                20
+                                                {{$courseTotal}}
                                             </a>
                                         </div>
                                     </div>
@@ -40,7 +40,7 @@
                                                 Mentors
                                             </a>
                                             <a href="#" class="no-underline text-white text-lg">
-                                                2
+                                                {{$mentorTotal}}
                                             </a>
                                         </div>
                                     </div>
@@ -48,10 +48,10 @@
                                     <div class="rounded-lg bg-gradient-to-r from-green-400 to-blue-500 mb-2 p-2 md:w-1/4 mx-2">
                                         <div class="p-4 flex flex-col">
                                             <a href="#" class="no-underline text-white text-2xl">
-                                                Videos
+                                                Playlist
                                             </a>
                                             <a href="#" class="no-underline text-white text-lg">
-                                                120
+                                                {{$playlistTotal}}
                                             </a>
                                         </div>
                                     </div>

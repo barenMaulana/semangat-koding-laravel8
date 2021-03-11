@@ -11,25 +11,22 @@ use App\Http\Livewire\UserCourses;
 use App\Http\Livewire\PlayingVideos;
 use App\Http\Livewire\CourseVideos;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
+// app
 Route::get('/', [AppController::class, 'index']);
 Route::get('/kelas', [ClassController::class, 'index']);
 
+// dashboard admin & users
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/dashboard',Dashboard::class)->name('dashboard');
+    Route::get('/playing-videos/{post}/{id?}',PlayingVideos::class);
+});
+
+// admin rooms
+Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function () {
     Route::get('/course',Courses::class)->name('course');
     Route::get('/course-videos',CourseVideos::class)->name('course-videos');
     Route::get('/user',Users::class)->name('user');
     Route::get('/access',UserCourses::class)->name('access');
-    Route::get('/playing-videos/{post}/{id?}',PlayingVideos::class);
 });
+
