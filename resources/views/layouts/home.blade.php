@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en-US" dir="ltr">
-
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ url('/frontend/public/assets/img/favicons/logo-semangat-koding.png') }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ url('/frontend/public/assets/img/favicons/logo-semangat-koding.png') }}">
@@ -12,10 +12,10 @@
   <link rel="manifest" href="assets/img/favicons/manifest.json">
   <meta name="msapplication-TileImage" content="{{ url('/frontend/public/assets/img/favicons/logo-semangat-koding.png') }}">
   <meta name="theme-color" content="#ffffff">
-  <title>{{$title}}</title>
+  <title>Semangat Koding | membangun indonesia</title>
+  @livewireStyles
   @include('includes.app.style')
 </head>
-
 
 <body>
   <main class="main" id="top">
@@ -32,7 +32,6 @@
           <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
             <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="{{ url('/') }}">Home</a></li>
             <li class="nav-item px-2"><a class="nav-link fw-medium" href="{{ url('/kelas') }}">Kelas</a></li>
-            <li class="nav-item px-2"><a class="nav-link fw-medium" href="{{ url('/rekomendasi') }}">Rekomendasi</a></li>
           </ul>
           @guest
             <a href="{{ url('/login') }}" class="btn btn-lg btn-info rounded-pill bg-gradient order-0" type="submit">Masuk</a>&nbsp;
@@ -46,7 +45,7 @@
     </nav>
 
     <section class="py-0" id="home">
-      @yield('content')
+        {{ $slot }}
     </section> 
 
     <!-- footer -->
@@ -149,6 +148,7 @@
   <!--    JavaScripts-->
   <!-- ===============================================-->
 @include('includes.app.script')
+@livewireScripts
 </body>
 
 </html>

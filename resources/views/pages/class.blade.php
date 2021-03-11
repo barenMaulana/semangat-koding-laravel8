@@ -1,5 +1,4 @@
-@extends('layouts/App')
-@section('content')
+<div>
 <section class="py-5 mt-5">
     <div class="bg-holder d-none d-sm-block"
       style="background-image:url({{url("/frontend/public/assets/img/illustrations/category-bg.png")}});background-position:right top;background-size:200px 320px;">
@@ -89,4 +88,4 @@
       </div>
     </div>
   </section>
-@endsection
+</div>

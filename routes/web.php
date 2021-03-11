@@ -10,11 +10,13 @@ use App\Http\Livewire\Users;
 use App\Http\Livewire\UserCourses;
 use App\Http\Livewire\PlayingVideos;
 use App\Http\Livewire\CourseVideos;
+use App\Http\Livewire\App;
+use App\Http\Livewire\Kelas;
 
 
 // app
-Route::get('/', [AppController::class, 'index']);
-Route::get('/kelas', [ClassController::class, 'index']);
+Route::get('/', App::class)->name('/');
+Route::get('/kelas', Kelas::class)->name('kelas');
 
 // dashboard admin & users
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
