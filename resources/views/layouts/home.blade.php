@@ -15,6 +15,18 @@
   <title>Semangat Koding | membangun indonesia</title>
   @livewireStyles
   @include('includes.app.style')
+  <style>
+    .course-overview::-webkit-scrollbar {
+        display: none;
+    }
+
+    .course-overview {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+    </style>
 </head>
 
 <body>

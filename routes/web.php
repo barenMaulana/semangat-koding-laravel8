@@ -12,16 +12,20 @@ use App\Http\Livewire\PlayingVideos;
 use App\Http\Livewire\CourseVideos;
 use App\Http\Livewire\App;
 use App\Http\Livewire\Kelas;
+use App\Http\Livewire\TrailerKelas;
+use App\Http\Livewire\CourseCheckout;
 
 
 // app
 Route::get('/', App::class)->name('/');
 Route::get('/kelas', Kelas::class)->name('kelas');
+Route::get('/kelas/{post}', TrailerKelas::class);
 
 // dashboard admin & users
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/dashboard',Dashboard::class)->name('dashboard');
     Route::get('/playing-videos/{post}/{id?}',PlayingVideos::class);
+    Route::get('/checkout/{post}', CourseCheckout::class);
 });
 
 // admin rooms
