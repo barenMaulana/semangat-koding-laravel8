@@ -3,10 +3,13 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Course;
 use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;   
+use Illuminate\Support\Facades\DB;
+use App\Models\Course;
+use App\Models\CourseUser;
+use App\Models\CourseVideo;
 
 class Courses extends Component
 {
@@ -39,7 +42,8 @@ class Courses extends Component
             $bankName,
             $payment_account1,
             $bankName1,
-            $payment_account_name1;
+            $payment_account_name1,
+            $isUpdate;
 
     public $isModal = 0;
     public $deleteId = false;
@@ -109,6 +113,7 @@ class Courses extends Component
         $this->payment_account1 = '';
         $this->payment_account_name1 = '';
         $this->bankName = '';
+        $this->isUpdate = false;
     }
 
     public function store()
@@ -147,31 +152,85 @@ class Courses extends Component
         }
         $slug = Str::slug($this->title,'-');
 
-        Course::updateOrCreate(['id' => $this->course_id], [
-            'title' => $this->title,
-            'price' => $this->price,
-            'description' => $this->description,
-            'build_with' => $this->build_with,
-            'consultation' => $this->consultation,
-            'certificate' => $this->certificate,
-            'type' => $this->type,
-            'operating_system' => $this->operating_system,
-            'ram' => $this->ram,
-            'empty_storage' => $this->empty_storage,
-            'will_study' => $this->will_study,
-            'technology' => $this->technology,
-            'category' => $this->category,
-            'payment_account' => $this->payment_account,
-            'payment_account_name' => $this->payment_account_name,
-            'phone_number' => $this->phone_number,
-            'thumbnail_file_name' => $thumbsFileName,
-            'slug' => $slug,
-            'populer' => $this->populer,
-            'bankName' => $this->bankName,
-            'payment_account1' => $this->payment_account1,
-            'payment_account_name1' => $this->payment_account_name1,
-            'bankName1' => $this->bankName1,
-        ]);
+        if($this->isUpdate == true){
+            DB::beginTransaction();
+
+                try {
+                Course::updateOrCreate(['id' => $this->course_id], [
+                    'title' => $this->title,
+                    'price' => $this->price,
+                    'description' => $this->description,
+                    'build_with' => $this->build_with,
+                    'consultation' => $this->consultation,
+                    'certificate' => $this->certificate,
+                    'type' => $this->type,
+                    'operating_system' => $this->operating_system,
+                    'ram' => $this->ram,
+                    'empty_storage' => $this->empty_storage,
+                    'will_study' => $this->will_study,
+                    'technology' => $this->technology,
+                    'category' => $this->category,
+                    'payment_account' => $this->payment_account,
+                    'payment_account_name' => $this->payment_account_name,
+                    'phone_number' => $this->phone_number,
+                    'thumbnail_file_name' => $thumbsFileName,
+                    'slug' => $slug,
+                    'populer' => $this->populer,
+                    'bankName' => $this->bankName,
+                    'payment_account1' => $this->payment_account1,
+                    'payment_account_name1' => $this->payment_account_name1,
+                    'bankName1' => $this->bankName1,
+                ]);
+
+
+                CourseUser::where('course_id',$this->course_id)
+                            ->update([
+                                'course_title' => $this->title
+                            ]);
+
+                CourseVideo::where('course_id',$this->course_id)
+                            ->update([
+                                'course_title' => $slug
+                            ]);
+                DB::commit();
+                // all good
+            } catch (Exception $e) {
+                DB::rollback();
+                session()->flash('errMessage', 'failed to change, please try again');
+                $this->closeModal(); 
+                $this->resetFields();
+                exit; 
+            }
+        }else{
+            Course::updateOrCreate(['id' => $this->course_id], [
+                'title' => $this->title,
+                'price' => $this->price,
+                'description' => $this->description,
+                'build_with' => $this->build_with,
+                'consultation' => $this->consultation,
+                'certificate' => $this->certificate,
+                'type' => $this->type,
+                'operating_system' => $this->operating_system,
+                'ram' => $this->ram,
+                'empty_storage' => $this->empty_storage,
+                'will_study' => $this->will_study,
+                'technology' => $this->technology,
+                'category' => $this->category,
+                'payment_account' => $this->payment_account,
+                'payment_account_name' => $this->payment_account_name,
+                'phone_number' => $this->phone_number,
+                'thumbnail_file_name' => $thumbsFileName,
+                'slug' => $slug,
+                'populer' => $this->populer,
+                'bankName' => $this->bankName,
+                'payment_account1' => $this->payment_account1,
+                'payment_account_name1' => $this->payment_account_name1,
+                'bankName1' => $this->bankName1,
+            ]);
+        }
+
+
+
 
         session()->flash('message', $this->course_id ? $this->title . ' Diperbaharui': $this->title . ' Ditambahkan');
         $this->closeModal(); 
@@ -205,6 +264,7 @@ class Courses extends Component
         $this->bankName1 = $course->bankName1;
         $this->payment_account1 = $course->payment_account1;
         $this->payment_account_name1 = $course->payment_account_name1;
+        $this->isUpdate = true;
 
         $this->openModal();
     }

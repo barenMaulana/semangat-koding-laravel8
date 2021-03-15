@@ -51,10 +51,20 @@
                                     <li class="d-flex justify-content-between"><span>Total : </span><span class="text-dark"><u>Rp.{{number_format($course->price)}}</u></span></li>
                                     <hr>
                                     <h6 class="card-title">Transfer Pembayaran</h6>
-                                    <li class="d-flex justify-content-between"><span>Bank : </span><span class="text-dark">nama bank</span></li>
-                                    <li class="d-flex justify-content-between"><span>No. Rekening : </span><span class="text-dark">{{$course->payment_account}}</span></li>
-                                    <li class="d-flex justify-content-between"><span>Penerima : </span><span class="text-dark">{{$course->payment_account_name}}</span></li>
-                                    <li class="d-flex justify-content-between"></li>
+                                    <div class="p-2" style="border-radius: 5px;background-color:#bcffd5b9;">
+                                        <li class="d-flex justify-content-between"><span>Bank : </span><span class="text-dark">{{$course->bankName}}</span></li>
+                                        <li class="d-flex justify-content-between"><span>No. Rekening : </span><span class="text-dark">{{$course->payment_account}}</span></li>
+                                        <li class="d-flex justify-content-between"><span>Penerima : </span><span class="text-dark">{{$course->payment_account_name}}</span></li>
+                                        <li class="d-flex justify-content-between"></li>
+                                    </div>
+                                    @if ($course->bankName1 != '' && $course->payment_account1 != '' && $course->payment_account_name1 != '')                                        
+                                        <div class="p-2 mt-2" style="border-radius: 5px;background-color:#fcffbcb1;">
+                                            <li class="d-flex justify-content-between"><span>Bank : </span><span class="text-dark">{{$course->bankName1}}</span></li>
+                                            <li class="d-flex justify-content-between"><span>No. Rekening : </span><span class="text-dark">{{$course->payment_account1}}</span></li>
+                                            <li class="d-flex justify-content-between"><span>Penerima : </span><span class="text-dark">{{$course->payment_account_name1}}</span></li>
+                                            <li class="d-flex justify-content-between"></li>
+                                        </div>
+                                    @endif
                                 </ul>
                             </div>
                             </div>

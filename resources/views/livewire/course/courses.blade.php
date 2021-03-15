@@ -41,6 +41,15 @@
                         </div>
                     </div>
                 @endif
+                @if (session()->has('errMessage'))
+                    <div class="bg-gradient-to-r from-red-400 to-yellow-500 text-white px-4 py-3 shadow-md my-3 rounded" role="alert">
+                        <div class="flex">
+                            <div>
+                                <p class="text-sm">{{ session('errMessage') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
 
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" id="navigationForMultipleDelete">
                     <button wire:click="create()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Add Course</button>

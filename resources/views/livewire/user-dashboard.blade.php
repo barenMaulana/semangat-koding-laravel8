@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight flex justify-center items-center">
-                <img src="{{asset('storage/'.Auth::user()->profile_photo_path)}}" width="50">&nbsp;
+                <img src="{{asset('storage/'.Auth::user()->profile_photo_path)}}" width="50" style="border-radius: 50%;">&nbsp;
                 {{ __(Auth::user()->name) }}
             </h2>
     </x-slot>
@@ -18,7 +18,12 @@
                             <div class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                 <div class="text-black font-bold text-xl mb-2 leading-tight">{{$row->title}}</div>
                                 <div>
-                                    <button type="button" class="bg-gradient-to-r from-green-400 to-blue-500 text-white p-2 rounded  leading-none flex items-center">{{$row->technology}}</button>
+                                    @php
+                                        $tech = explode(',',$row->technology);
+                                    @endphp
+                                    @foreach ($tech as $item)
+                                        <span class="bg-gradient-to-r from-green-400 to-blue-500 text-white p-2 rounded">{{$item}}</span>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
