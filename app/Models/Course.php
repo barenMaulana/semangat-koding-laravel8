@@ -28,7 +28,12 @@ class Course extends Model
         'payment_account_name',
         'phone_number',
         'slug',
-        'thumbnail_file_name'
+        'thumbnail_file_name',
+        'populer',
+        'bankName',
+        'bankName1',
+        'payment_account1',
+        'payment_account_name1'
     ];
 
     public function courseVideo()

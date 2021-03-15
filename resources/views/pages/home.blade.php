@@ -85,7 +85,11 @@
                     <img src="{{asset('storage/'.$row->thumbnail_file_name)}}" class="img-fluid rounded" alt="semangat koding" />
                     <div class="card-body px-2">
                       <h6 class="fw-bold fs-1 heading-color">{{$row->title}}</h6>
-                      <p class="mb-0 badge bg-info">{{$row->type}}</p>
+                      @if ($row->type == "free")
+                      <p class="mb-0 badge bg-warning">{{$row->type}}</p>
+                    @else
+                      <p class="mb-0 badge bg-danger">{{$row->type}}</p>
+                    @endif
                     </div>
                     <hr>
 

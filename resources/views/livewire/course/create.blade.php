@@ -55,6 +55,8 @@
                             <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="technology" wire:model="technology">
                             @error('technology') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
+                        <hr class="my-5">
+                        <h5 class="text-center block text-gray-700 text-sm font-bold">payment information <sup>required</sup></h5>
                         <div class="mb-4">
                             <label for="payment_account" class="block text-gray-700 text-sm font-bold mb-2">Payment account:</label>
                             <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="payment_account" wire:model="payment_account">
@@ -66,10 +68,47 @@
                             @error('payment_account_name') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
+                            <label for="bankName" class="block text-gray-700 text-sm font-bold mb-2">bankName</label>
+                            <select class="form-control" wire:model="bankName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="">Pilih</option>
+                                <option value="BCA">BCA</option>
+                                <option value="BRI">BRI</option>
+                                <option value="BNI">BNI</option>
+                                <option value="MANDIRI">MANDIRI</option>
+                                <option value="BJB">BJB</option>
+                            </select>
+                            @error('bankName') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <hr class="my-5"> 
+                        <h5 class="text-center block text-gray-500 text-sm font-bold">payment information <sup>Optional</sup></h5>
+                        <div class="mb-4">
+                            <label for="payment_account1" class="block text-gray-700 text-sm font-bold mb-2">Payment account:</label>
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="payment_account1" wire:model="payment_account1">
+                            @error('payment_account1') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="mb-4">
+                            <label for="payment_account_name1" class="block text-gray-700 text-sm font-bold mb-2">Payment account name:</label>
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="payment_account_name1" wire:model="payment_account_name1">
+                            @error('payment_account_name1') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="mb-4">
+                            <label for="bankName1" class="block text-gray-700 text-sm font-bold mb-2">bankName1</label>
+                            <select class="form-control" wire:model="bankName1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="">Pilih</option>
+                                <option value="BCA">BCA</option>
+                                <option value="BRI">BRI</option>
+                                <option value="BNI">BNI</option>
+                                <option value="MANDIRI">MANDIRI</option>
+                                <option value="BJB">BJB</option>
+                            </select>
+                            @error('bankName1') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="mb-4">
                             <label for="phone_number" class="block text-gray-700 text-sm font-bold mb-2">Phone number:</label>
                             <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone_number" wire:model="phone_number">
                             @error('phone_number') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
+                        <hr class="my-5">
                         <div class="mb-4">
                             <label for="consultation" class="block text-gray-700 text-sm font-bold mb-2">Consultation</label>
                             <select class="form-control" wire:model="consultation" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -78,6 +117,15 @@
                                 <option value="0">N/A</option>
                             </select>
                             @error('consultation') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="mb-4">
+                            <label for="populer" class="block text-gray-700 text-sm font-bold mb-2">Populer</label>
+                            <select class="form-control" wire:model="populer" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="">Pilih</option>
+                                <option value="1">Active</option>
+                                <option value="0">N/A</option>
+                            </select>
+                            @error('populer') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
                             <label for="certificate" class="block text-gray-700 text-sm font-bold mb-2">Certificate</label>

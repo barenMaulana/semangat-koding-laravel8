@@ -34,7 +34,12 @@ class Courses extends Component
             $slug,
             $thumbnail_file_name,
             $old_file_name,
-            $idCheck;
+            $idCheck,
+            $populer,
+            $bankName,
+            $payment_account1,
+            $bankName1,
+            $payment_account_name1;
 
     public $isModal = 0;
     public $deleteId = false;
@@ -99,6 +104,11 @@ class Courses extends Component
         $this->course_id = '';
         $this->deleteId = false;
         $this->old_file_name = '';
+        $this->populer = 0;
+        $this->bankName = '';
+        $this->payment_account1 = '';
+        $this->payment_account_name1 = '';
+        $this->bankName = '';
     }
 
     public function store()
@@ -126,6 +136,8 @@ class Courses extends Component
             'payment_account_name' => 'required',
             'phone_number' => 'required',
             'thumbnail_file_name' => $imageValidation,
+            'populer' => 'required',
+            'bankName' => 'required',
         ]);
 
         if($this->thumbnail_file_name != $this->old_file_name){
@@ -154,6 +166,11 @@ class Courses extends Component
             'phone_number' => $this->phone_number,
             'thumbnail_file_name' => $thumbsFileName,
             'slug' => $slug,
+            'populer' => $this->populer,
+            'bankName' => $this->bankName,
+            'payment_account1' => $this->payment_account1,
+            'payment_account_name1' => $this->payment_account_name1,
+            'bankName1' => $this->bankName1,
         ]);
 
         session()->flash('message', $this->course_id ? $this->title . ' Diperbaharui': $this->title . ' Ditambahkan');
@@ -183,6 +200,11 @@ class Courses extends Component
         $this->phone_number = $course->phone_number;
         $this->thumbnail_file_name = $course->thumbnail_file_name;
         $this->old_file_name = $course->thumbnail_file_name;
+        $this->populer = $course->populer;
+        $this->bankName = $course->bankName;
+        $this->bankName1 = $course->bankName1;
+        $this->payment_account1 = $course->payment_account1;
+        $this->payment_account_name1 = $course->payment_account_name1;
 
         $this->openModal();
     }
