@@ -44,9 +44,9 @@
                             @endforeach
                         </ul>
                         </div>
-                        <div class="card-footer text-center bg-primary-gradient">
-                            <a href="{{url('checkout/'.$course->slug)}}" target="_blank" style="font-size: 16px !important;" class="btn text-white btn-block font-weight-medium">AMBIL KELAS</a>
-                        </div>
+                        <a href="{{url('checkout/'.$course->slug)}}" target="_blank" class="card-footer text-center bg-primary-gradient">
+                            <span style="font-size: 16px !important;" class="btn text-white btn-block font-weight-medium">AMBIL KELAS</span>
+                        </a>
                         </div>
                 </div>
             </div>

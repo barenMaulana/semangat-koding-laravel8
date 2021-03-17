@@ -33,7 +33,8 @@ class Course extends Model
         'bankName',
         'bankName1',
         'payment_account1',
-        'payment_account_name1'
+        'payment_account_name1',
+        'user_id'
     ];
 
     public function courseVideo()

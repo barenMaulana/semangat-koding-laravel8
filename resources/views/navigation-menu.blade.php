@@ -15,6 +15,17 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    @if (Auth::user()->role == "mentor")
+                    <x-jet-nav-link href="{{ route('course-management') }}" :active="request()->routeIs('course-management')">
+                        {{ __('Course Management') }}
+                    </x-jet-nav-link>
+                    @endif
+                    @if (Auth::user()->role == "user")
+                    <x-jet-nav-link href="{{ route('offer') }}" :active="request()->routeIs('offer')">
+                        {{ __('Offers') }}
+                    </x-jet-nav-link>
+                    @endif
+
                     @if (Auth::user()->role == 'admin')
                     <x-jet-nav-link href="{{ route('user') }}" :active="request()->routeIs('user')">
                         {{ __('Users') }}

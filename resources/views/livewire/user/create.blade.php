@@ -25,6 +25,7 @@
                             <select class="form-control" wire:model="role" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="">Pilih</option>
                                 <option value="admin">ADMIN</option>
+                                <option value="mentor">MENTOR</option>
                                 <option value="user">USER</option>
                             </select>
                             @error('role') <span class="text-red-500">{{ $message }}</span>@enderror

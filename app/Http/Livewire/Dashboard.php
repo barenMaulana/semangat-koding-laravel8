@@ -29,8 +29,12 @@ class Dashboard extends Component
 
         if(Auth::user()->role == 'admin'){
             return view('livewire.dashboard');
+        }else if(Auth::user()->role == "mentor"){
+            $courses = Course::where("user_id",Auth::user()->id)->get();
+            $this->courses = $courses;
+            return view('livewire.mentor-dashboard');
         }else{
-            $courseAccess = CourseUser::where('user_email',Auth::user()->email)->get();
+        $courseAccess = CourseUser::where('user_email',Auth::user()->email)->get();
             $idCourse = [];
             for ($i=0; $i < count($courseAccess); $i++) { 
                 array_push($idCourse,$courseAccess[$i]->course_id);

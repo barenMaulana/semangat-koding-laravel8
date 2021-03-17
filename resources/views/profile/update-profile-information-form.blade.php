@@ -55,7 +55,7 @@
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="name" value="{{ __('Name') }}" />
-            <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
+            <x-jet-input id="name" type="text" class="mt-1 block w-full disabled:opacity-50" wire:model.defer="state.name" autocomplete="name" disabled/>
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
@@ -67,13 +67,21 @@
         </div>
     </x-slot>
 
-    <x-slot name="actions">
-        <x-jet-action-message class="mr-3" on="saved">
-            {{ __('Saved.') }}
-        </x-jet-action-message>
+    @if (Auth::user()->role == "mentor")
+        <x-slot name="actions">
+            <a href="https://api.whatsapp.com/send?phone={{env('ADMIN_PHONE')}}&text=Halo,%20Saya%20{{Auth::user()->name}},%20email:%20{{Auth::user()->email}}%20ingin%20mengubah%20nama/email,%20menjadi:" class="bg-gradient-to-r from-green-400 to-blue-500 hover:bg-red-700 px-3 py-1 rounded text-white mr-1 close-modal">
+                Ubah Nama / Email
+            </a>
+        </x-slot>
+    @else
+        <x-slot name="actions">
+            <x-jet-action-message class="mr-3" on="saved">
+                {{ __('Saved.') }}
+            </x-jet-action-message>
 
-        <x-jet-button wire:loading.attr="disabled" wire:target="photo">
-            {{ __('Save') }}
-        </x-jet-button>
-    </x-slot>
+            <x-jet-button wire:loading.attr="disabled" wire:target="photo">
+                {{ __('Save') }}
+            </x-jet-button>
+        </x-slot>
+    @endif
 </x-jet-form-section>

@@ -12,7 +12,7 @@ use App\Models\CourseVideo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class Courses extends Component
+class CourseManagement extends Component
 {
     use WithPagination;
     use WithFileUploads;
@@ -58,10 +58,11 @@ class Courses extends Component
 
     public function render()
     {
-        $courses = Course::latest()->simplePaginate(10);
+        $courses = Course::where('user_id', Auth::user()->id)->simplePaginate(10);
 
         if ($this->search !== null) {
             $courses = Course::where('title', 'like', '%' . $this->search . '%')
+                            ->where('user_id','=',Auth::user()->id)
                             ->latest()
                             ->simplePaginate(10);
         }

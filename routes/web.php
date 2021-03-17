@@ -14,6 +14,8 @@ use App\Http\Livewire\App;
 use App\Http\Livewire\Kelas;
 use App\Http\Livewire\TrailerKelas;
 use App\Http\Livewire\CourseCheckout;
+use App\Http\Livewire\Offer;
+use App\Http\Livewire\CourseManagement;
 
 
 // app
@@ -26,6 +28,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/dashboard',Dashboard::class)->name('dashboard');
     Route::get('/playing-videos/{post}/{id?}',PlayingVideos::class);
     Route::get('/checkout/{post}', CourseCheckout::class);
+    Route::get('/offer', Offer::class)->name('offer');
 });
 
 // admin rooms
@@ -36,3 +39,6 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function () {
     Route::get('/access',UserCourses::class)->name('access');
 });
 
+Route::middleware(['auth:sanctum','verified','mentor'])->group(function(){
+    Route::get('mentor/course-management',CourseManagement::class)->name('course-management');
+});
