@@ -38,7 +38,7 @@
                             <div class="collapse my-2" id="collapseConfirm">
                                 <div class="card card-body" style="border:none;">
                                     <a href="https://api.whatsapp.com/send?phone={{$course->phone_number}}&text=Halo,%20Saya%20sudah%20melakukan%20pembayaran%20kelas%20{{$course->title}}.%20Dengan%20email%20=%20{{Auth::user()->email}},%20Berikut%20saya%20lampirkan%20foto%20bukti%20pembayaran:" 
-                                        class="btn text-white" type="button" style="background-color: #12ff61">
+                                        class="btn text-white" type="button" style="background-color: #12ff61" target="_blank">
                                         Konfirmasi
                                     </a>
                                 </div>

@@ -8,7 +8,7 @@ use App\Models\Course;
 use App\Models\CourseUser;
 use App\Models\Invoice;
 use Livewire\WithPagination;
-
+use Illuminate\Support\Facades\DB;
 
 class UserCourses extends Component
 {   
@@ -91,14 +91,27 @@ class UserCourses extends Component
                 'courseId' => 'required',
             ]); 
     
+            DB::beginTransaction();
+            try {
             $course_user = CourseUser::create([
                 'course_id' => $this->courseId,
                 'course_title' => $this->courseTitle,
                 'user_email' => $this->userEmail
             ]);
-
+            
+            // create invoice
             $this->createInvoice($this->userEmail,$this->courseId);
 
+            // saldo update for mentor
+                $course = Course::find($this->courseId);
+                $mentor = User::find($course->user_id);
+                $mentor->saldo = $course->price * 20 / 100;
+                $mentor->save();
+
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollback();
+            }
             $this->resetFields();
             session()->flash('message', $pesan);
         }else{

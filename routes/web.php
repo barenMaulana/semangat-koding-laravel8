@@ -26,9 +26,13 @@ Route::get('/kelas/{post}', TrailerKelas::class);
 // dashboard admin & users
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/dashboard',Dashboard::class)->name('dashboard');
-    Route::get('/playing-videos/{post}/{id?}',PlayingVideos::class);
     Route::get('/checkout/{post}', CourseCheckout::class);
     Route::get('/offer', Offer::class)->name('offer');
+});
+
+// content
+Route::middleware(['auth:sanctum', 'verified', 'fetchUser'])->group(function (){
+    Route::get('/playing-videos/{post}/{id?}',PlayingVideos::class);
 });
 
 // admin rooms

@@ -4,7 +4,6 @@
             <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
         </div>
         <!-- This element is to trick the browser into centering the modal contents. -->
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
         
         <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
             <form>
@@ -17,7 +16,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="coursePrice" class="block text-gray-700 text-sm font-bold mb-2">Price:</label>
-                            <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="coursePrice" wire:model="price">
+                            <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="coursePrice" wire:model="price" placeholder="100000">
                             @error('price') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
@@ -32,17 +31,17 @@
                         </div>
                         <div class="mb-4">
                             <label for="operatingSystem" class="block text-gray-700 text-sm font-bold mb-2">OS:</label>
-                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="operatingSystem" wire:model="operating_system">
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="operatingSystem" wire:model="operating_system" placeholder="windows,linux,mac">
                             @error('operating_system') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
                             <label for="ram" class="block text-gray-700 text-sm font-bold mb-2">RAM:</label>
-                            <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="ram" wire:model="ram">
+                            <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="ram" wire:model="ram" placeholder="2">
                             @error('ram') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
                             <label for="empty_storage" class="block text-gray-700 text-sm font-bold mb-2">Empty storage:</label>
-                            <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="empty_storage" wire:model="empty_storage">
+                            <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="empty_storage" wire:model="empty_storage" placeholder="ruang kosong device user">
                             @error('empty_storage') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
@@ -58,17 +57,17 @@
                         <hr class="my-5">
                         <h5 class="text-center block text-gray-700 text-sm font-bold">payment information <sup>required</sup></h5>
                         <div class="mb-4">
-                            <label for="payment_account" class="block text-gray-700 text-sm font-bold mb-2">Payment account:</label>
+                            <label for="payment_account" class="block text-gray-700 text-sm font-bold mb-2">Rekening number:</label>
                             <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="payment_account" wire:model="payment_account">
                             @error('payment_account') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
-                            <label for="payment_account_name" class="block text-gray-700 text-sm font-bold mb-2">Payment account name:</label>
+                            <label for="payment_account_name" class="block text-gray-700 text-sm font-bold mb-2">Atas nama:</label>
                             <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="payment_account_name" wire:model="payment_account_name">
                             @error('payment_account_name') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
-                            <label for="bankName" class="block text-gray-700 text-sm font-bold mb-2">bankName</label>
+                            <label for="bankName" class="block text-gray-700 text-sm font-bold mb-2">Nama bank</label>
                             <select class="form-control" wire:model="bankName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="">Pilih</option>
                                 <option value="BCA">BCA</option>
@@ -82,17 +81,17 @@
                         <hr class="my-5"> 
                         <h5 class="text-center block text-gray-500 text-sm font-bold">payment information <sup>Optional</sup></h5>
                         <div class="mb-4">
-                            <label for="payment_account1" class="block text-gray-700 text-sm font-bold mb-2">Payment account:</label>
+                            <label for="payment_account1" class="block text-gray-700 text-sm font-bold mb-2">Rekening number:</label>
                             <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="payment_account1" wire:model="payment_account1">
                             @error('payment_account1') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
-                            <label for="payment_account_name1" class="block text-gray-700 text-sm font-bold mb-2">Payment account name:</label>
+                            <label for="payment_account_name1" class="block text-gray-700 text-sm font-bold mb-2">Atas nama:</label>
                             <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="payment_account_name1" wire:model="payment_account_name1">
                             @error('payment_account_name1') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
-                            <label for="bankName1" class="block text-gray-700 text-sm font-bold mb-2">bankName1</label>
+                            <label for="bankName1" class="block text-gray-700 text-sm font-bold mb-2">Nama bank</label>
                             <select class="form-control" wire:model="bankName1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="">Pilih</option>
                                 <option value="BCA">BCA</option>
@@ -105,7 +104,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="phone_number" class="block text-gray-700 text-sm font-bold mb-2">Phone number:</label>
-                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone_number" wire:model="phone_number">
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone_number" wire:model="phone_number" placeholder="628xxxxxx">
                             @error('phone_number') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <hr class="my-5">
