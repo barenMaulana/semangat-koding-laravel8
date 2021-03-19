@@ -8,7 +8,7 @@ use App\Models\CourseUser;
 use App\Models\Course;
 use App\Models\User;
 use App\Models\CourseVideo;
-use App\Models\Withdrawals;
+use App\Models\Withdrawal;
 
 
 class Dashboard extends Component
@@ -51,16 +51,19 @@ class Dashboard extends Component
     {
         if($amount > Auth::user()->saldo){
             session()->flash('errMessage', 'Oops, saldo tidak mencukupi');
-        }
+        }else{
+
         $this->validate([
             'amount' => 'required|numeric'
         ]);
         $this->uniqueCode = 'SEMANGAT-KODING|'.time();
-        Withdrawals::create([
+        Withdrawal::create([
             'user_id' => Auth::user()->id,
             'amount' => $this->amount,
             'unique_code' => $this->uniqueCode
         ]);
         session()->flash('message', 'Berhasil mengirim permintaan penarikan saldo, saldo anda tidak akan berkurang secara langsung');
+    }
+
     }
 }
