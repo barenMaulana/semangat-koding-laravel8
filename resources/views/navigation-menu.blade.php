@@ -30,6 +30,9 @@
                     <x-jet-nav-link href="{{ route('user') }}" :active="request()->routeIs('user')">
                         {{ __('Users') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('approvals') }}" :active="request()->routeIs('approvals')">
+                        {{ __('Approvals') }}
+                    </x-jet-nav-link>
 
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
                         <x-jet-dropdown width="48">

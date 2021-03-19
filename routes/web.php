@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\ClassController;
@@ -16,7 +15,7 @@ use App\Http\Livewire\TrailerKelas;
 use App\Http\Livewire\CourseCheckout;
 use App\Http\Livewire\Offer;
 use App\Http\Livewire\CourseManagement;
-
+use App\Http\Livewire\Approval;
 
 // app
 Route::get('/', App::class)->name('/');
@@ -41,6 +40,7 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function () {
     Route::get('/course-videos',CourseVideos::class)->name('course-videos');
     Route::get('/user',Users::class)->name('user');
     Route::get('/access',UserCourses::class)->name('access');
+    Route::get('/approvals',Approval::class)->name('approvals');
 });
 
 Route::middleware(['auth:sanctum','verified','mentor'])->group(function(){

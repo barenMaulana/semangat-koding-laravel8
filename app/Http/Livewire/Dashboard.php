@@ -8,16 +8,19 @@ use App\Models\CourseUser;
 use App\Models\Course;
 use App\Models\User;
 use App\Models\CourseVideo;
+use App\Models\Withdrawals;
 
 
 class Dashboard extends Component
 {
 
-    public $courses;
-    public $studentTotal;
-    public $courseTotal;
-    public $mentorTotal;
-    public $playlistTotal;
+    public $courses,
+            $studentTotal,
+            $courseTotal,
+            $mentorTotal,
+            $playlistTotal,
+            $amount,
+            $uniqueCode = false;
 
     public function render()
     {
@@ -42,5 +45,22 @@ class Dashboard extends Component
             $this->courses = Course::whereIn('id',$idCourse)->get();
             return view('livewire.user-dashboard');
         }
+    }
+
+    public function withdrawalRequest($amount)
+    {
+        if($amount > Auth::user()->saldo){
+            session()->flash('errMessage', 'Oops, saldo tidak mencukupi');
+        }
+        $this->validate([
+            'amount' => 'required|numeric'
+        ]);
+        $this->uniqueCode = 'SEMANGAT-KODING|'.time();
+        Withdrawals::create([
+            'user_id' => Auth::user()->id,
+            'amount' => $this->amount,
+            'unique_code' => $this->uniqueCode
+        ]);
+        session()->flash('message', 'Berhasil mengirim permintaan penarikan saldo, saldo anda tidak akan berkurang secara langsung');
     }
 }

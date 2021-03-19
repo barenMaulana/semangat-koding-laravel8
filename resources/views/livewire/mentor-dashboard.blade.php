@@ -29,6 +29,49 @@
                                     <span>Saldo</span>
                                     <span>Rp.{{number_format(Auth::user()->saldo)}}</span>
                                 </div>
+                                <div x-data={show:false}>
+                                    <div class="flex justify-center font-bold text-gray-600">
+                                        <button @click="show=!show" class="border-2 border-blue-500 rounded-full font-bold text-blue-500 px-4 py-1 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6 mt-5">
+                                            Tarik Saldo
+                                        </button>
+                                    </div>
+                                    @if (session()->has('message'))
+                                        <div class="bg-gradient-to-r from-green-400 to-blue-500 text-white px-4 py-3 shadow-md my-3 rounded" role="alert">
+                                            <div class="flex">
+                                                <div>
+                                                    <p class="text-sm">{{ session('message') }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if (session()->has('errMessage'))
+                                        <div class="bg-gradient-to-r from-red-400 to-yellow-500 text-white px-4 py-3 shadow-md my-3 rounded" role="alert">
+                                            <div class="flex">
+                                                <div>
+                                                    <p class="text-sm">{{ session('errMessage') }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <div x-show="show" class="px-4 py-3 my-2 text-gray-700">
+                                        <form>
+                                            <label for="amount" class="block text-gray-700 text-sm font-bold mb-2">Jumlah:</label>
+                                            <input type="number" class="shadow appearance-none border-grey-600 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="amount" wire:model="amount">
+                                            @error('amount') <span class="text-red-500">{{ $message }}</span>@enderror
+                                        </form>
+                                        <button wire:click.prevent="withdrawalRequest({{$amount ? $amount : 0}})" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-gradient-to-r from-green-400 to-blue-500 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 my-2">
+                                            Kirim permintaan
+                                        </button>
+                                        @if ($uniqueCode != false)
+                                            <a href="https://api.whatsapp.com/send?phone={{env('ADMIN_PHONE')}}&text=Halo,%20Saya%20mentor%20{{Auth::user()->name}},%20telah%20melakukan%20withdraw%20saldo%20dengan%20id%20transaksi%20:%20{{$uniqueCode}}" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-gradient-to-r bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 my-2" target="_blank">
+                                                Konfirmasi Sekarang 
+                                            </a>
+                                        @endif
+
+                                    </div>
+                                </div>
+
+                                <hr class="my-5">
                                 <div class="flex justify-between font-bold text-gray-600">
                                     <span>Kelas</span>
                                     <span>{{count($courses)}}</span>
