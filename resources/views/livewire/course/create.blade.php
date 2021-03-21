@@ -55,6 +55,7 @@
                             <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="technology" wire:model="technology">
                             @error('technology') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
+                        @if (Auth::user()->role == "admin")                            
                         <hr class="my-5">
                         <h5 class="text-center block text-gray-700 text-sm font-bold">payment information <sup>required</sup></h5>
                         <div class="mb-4">
@@ -103,6 +104,8 @@
                             </select>
                             @error('bankName1') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
+                        @endif
+
                         <div class="mb-4">
                             <label for="phone_number" class="block text-gray-700 text-sm font-bold mb-2">Phone number:</label>
                             <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone_number" wire:model="phone_number" placeholder="628xxxxxx">

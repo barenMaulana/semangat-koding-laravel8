@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;   
 use App\Models\Course;
+use App\Models\User;
 use App\Models\CourseUser;
 use App\Models\CourseVideo;
 use Illuminate\Support\Facades\DB;
@@ -120,6 +121,15 @@ class CourseManagement extends Component
 
     public function store()
     {
+        $user = User::where('role','admin')->first();
+        
+        $this->payment_account = $user->payment_account;
+        $this->payment_account_name = $user->payment_profile;
+        $this->bankName = $user->bank_name;
+        $this->payment_account1 = $user->payment_account1;
+        $this->payment_account_name1 = $user->payment_profile1;
+        $this->bankName1 = $user->bank_name1;
+
         $imageValidation = '';
         if($this->thumbnail_file_name != $this->old_file_name){
             $imageValidation = "required|image|mimes:jpg,jpeg,png|max:1024";
@@ -139,12 +149,9 @@ class CourseManagement extends Component
             'will_study' => 'required',
             'technology' => 'required',
             'category' => 'required',
-            'payment_account' => 'required',
-            'payment_account_name' => 'required',
             'phone_number' => 'required',
             'thumbnail_file_name' => $imageValidation,
             'populer' => 'required',
-            'bankName' => 'required',
         ]);
 
         if($this->thumbnail_file_name != $this->old_file_name){
@@ -172,16 +179,16 @@ class CourseManagement extends Component
                     'will_study' => $this->will_study,
                     'technology' => $this->technology,
                     'category' => $this->category,
+                    'bankName' => $this->bankName,
                     'payment_account' => $this->payment_account,
                     'payment_account_name' => $this->payment_account_name,
+                    'bankName1' => $this->bankName1,
+                    'payment_account1' => $this->payment_account1,
+                    'payment_account_name1' => $this->payment_account_name1,
                     'phone_number' => $this->phone_number,
                     'thumbnail_file_name' => $thumbsFileName,
                     'slug' => $slug,
                     'populer' => $this->populer,
-                    'bankName' => $this->bankName,
-                    'payment_account1' => $this->payment_account1,
-                    'payment_account_name1' => $this->payment_account_name1,
-                    'bankName1' => $this->bankName1,
                     'user_id' => Auth::user()->id,
                 ]);
 

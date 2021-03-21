@@ -35,7 +35,7 @@
                                 width="720" 
                                 height="405"
                                 class="rounded border-8 border-blue-900"
-                                src="https://www.youtube.com/embed/{{$videoId}}/?cc_load_policy=1&color=white"
+                                src="https://www.youtube.com/embed/{{$videoId}}/?cc_load_policy=1&color=white&autoplay=1"
                                 frameborder="0" 
                                 allowfullscreen>
                         </div>

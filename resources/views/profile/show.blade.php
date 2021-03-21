@@ -21,6 +21,15 @@
                 <x-jet-section-border />
             @endif
 
+            @if (Auth::user()->role == "admin" || Auth::user() == "mentor")
+                <div class="mt-10 sm:mt-0">
+                    @livewire('payment-account')
+                </div>
+
+                <x-jet-section-border />
+            @endif
+
+
             @if (Auth::user()->role == 'admin')                
                 @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
                     <div class="mt-10 sm:mt-0">

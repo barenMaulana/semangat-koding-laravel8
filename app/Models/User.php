@@ -31,7 +31,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'expertise',
         'profile_photo_path',
-        'role'
+        'role',
+        'saldo',
+        'payment_account',
+        'payment_profile',
+        'bank_name',
+        'payment_account1',
+        'payment_profile1',
+        'bank_name1',
     ];
 
     /**

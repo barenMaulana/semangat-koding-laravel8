@@ -25,7 +25,7 @@
                 <div class="col-12 col-md-8 col-lg-8">
                     <div class="ratio" style="--bs-aspect-ratio: 60%;">
                         <iframe 
-                         src="https://www.youtube.com/embed/{{$videoData->trailerId}}/?cc_load_policy=1&color=white"
+                         src="https://www.youtube.com/embed/{{$videoData->trailerId}}/?cc_load_policy=1&color=white&autoplay=1"
                          title="YouTube video"
                          allowfullscreen 
                          style="border-radius: 15px;border:20px solid #222f3e;"></iframe>
