@@ -17,7 +17,8 @@ class Users extends Component
             $expertise,
             $role,
             $profile_photo_path,
-            $old_file_name;
+            $old_file_name,
+            $percentage;
 
     public $deleteId = false;    
     public $isModal = 0;    
@@ -67,6 +68,7 @@ class Users extends Component
         $this->user_id = '';
         $this->deleteId = false;
         $this->old_file_name = '';
+        $this->percentage = '';
     }
 
     public function store()
@@ -80,6 +82,7 @@ class Users extends Component
             'name' => 'required|string',
             'email' => 'required|email',
             'role' => 'required',
+            'percentage' => 'required|numeric',
             'profile_photo_path' => $imageValidation,
         ]);
 
@@ -93,6 +96,7 @@ class Users extends Component
             'name' => $this->name,
             'email' => $this->email,
             'role' => $this->role,
+            'percentage' => $this->percentage,
             'profile_photo_path' => $thumbsFileName,
         ]);
 
@@ -110,6 +114,7 @@ class Users extends Component
         $this->role = $users->role;
         $this->profile_photo_path = $users->profile_photo_path;
         $this->old_file_name = $users->profile_photo_path;
+        $this->percentage = $users->percentage;
 
         $this->openModal();
     }

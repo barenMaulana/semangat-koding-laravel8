@@ -17,7 +17,8 @@
             <div class="row justify-content-center mt-5 pt-5">
               <div class="col-md-9 col-lg-6 text-center mb-3">
                 <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">{{$course->title}}</h5>
-                <p class="mb-5">Dibangun oleh : {{$course->build_with}}</p>
+                <p class="mb-2">Dibangun oleh : {{$course->build_with}}</p>
+                <p class="mb-5">Pengguna kursus : <span class="bg-info text-white rounded px-4">{{$course->dummy_user_amount}}</span> </p>
               </div>
             </div>
             {{--video  --}}

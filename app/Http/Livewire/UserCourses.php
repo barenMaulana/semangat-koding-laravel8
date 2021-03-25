@@ -105,7 +105,7 @@ class UserCourses extends Component
             // saldo update for mentor
                 $course = Course::find($this->courseId);
                 $mentor = User::find($course->user_id);
-                $mentor->saldo = $course->price * 20 / 100;
+                $mentor->saldo = $course->price * $mentor->percentage / 100 + $mentor->saldo;
                 $mentor->save();
 
                 DB::commit();

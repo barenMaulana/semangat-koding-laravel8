@@ -16,10 +16,13 @@ use App\Http\Livewire\CourseCheckout;
 use App\Http\Livewire\Offer;
 use App\Http\Livewire\CourseManagement;
 use App\Http\Livewire\Approval;
+use App\Http\Livewire\Testimonials;
+use App\Http\Livewire\TestimonialManagements;
 
 // app
 Route::get('/', App::class)->name('/');
 Route::get('/kelas', Kelas::class)->name('kelas');
+Route::get('/testimonials', Testimonials::class)->name('testimoials');
 Route::get('/kelas/{post}', TrailerKelas::class);
 
 // dashboard admin & users
@@ -41,6 +44,7 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function () {
     Route::get('/user',Users::class)->name('user');
     Route::get('/access',UserCourses::class)->name('access');
     Route::get('/approvals',Approval::class)->name('approvals');
+    Route::get('/testimonial-management',TestimonialManagements::class)->name('testimonial-management');
 });
 
 Route::middleware(['auth:sanctum','verified','mentor'])->group(function(){

@@ -21,6 +21,11 @@
                             @error('email') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
+                            <label for="percentage" class="block text-gray-700 text-sm font-bold mb-2">percentage:</label>
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="percentage" wire:model="percentage">
+                            @error('percentage') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="mb-4">
                             <label for="role" class="block text-gray-700 text-sm font-bold mb-2">Role:</label>
                             <select class="form-control" wire:model="role" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="">Pilih</option>

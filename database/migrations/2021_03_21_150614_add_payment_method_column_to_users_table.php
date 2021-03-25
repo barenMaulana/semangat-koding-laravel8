@@ -14,9 +14,9 @@ class AddPaymentMethodColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->char('payment_account');
-            $table->char('payment_profile');
-            $table->char('bank_name');
+            $table->char('payment_account')->nullable();
+            $table->char('payment_profile')->nullable();
+            $table->char('bank_name')->nullable();
             $table->char('payment_account1')->nullable();
             $table->char('payment_profile1')->nullable();
             $table->char('bank_name1')->nullable();
@@ -34,9 +34,9 @@ class AddPaymentMethodColumnToUsersTable extends Migration
             $table->dropColumn('payment_account');
             $table->dropColumn('payment_profile');
             $table->dropColumn('bank_name');
-            $table->dropColumn('payment_account1')->nullable();
-            $table->dropColumn('payment_profile1')->nullable();
-            $table->dropColumn('bank_name1')->nullable();
+            $table->dropColumn('payment_account1');
+            $table->dropColumn('payment_profile1');
+            $table->dropColumn('bank_name1');
         });
     }
 }

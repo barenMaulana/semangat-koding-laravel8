@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Testimonial;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -39,6 +40,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'payment_account1',
         'payment_profile1',
         'bank_name1',
+        'testimonial',
+        'percentage',
     ];
 
     /**
@@ -70,4 +73,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function testimonial()
+    {
+        return $this->hasOne(Testimonial::class);
+    }
 }
