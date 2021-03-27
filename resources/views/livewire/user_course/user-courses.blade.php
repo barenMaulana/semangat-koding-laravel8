@@ -88,6 +88,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="mx-auto my-5">
+                    <input wire:model="discount_code" type="text" list="discount_code" name="discount_code" class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" placeholder="Discount Code">
+                    <p> @error('discount_code') <span class="text-red-500">{{ $message }}</span>@enderror</p>
+                </div>
                 @if ($openButton)
                     <div class="flex justify-center py-6">
                         <button wire:click.prevent="store()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Enroll</button>

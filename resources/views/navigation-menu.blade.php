@@ -15,17 +15,25 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+
+                    {{-- mentor --}}
                     @if (Auth::user()->role == "mentor")
                     <x-jet-nav-link href="{{ route('course-management') }}" :active="request()->routeIs('course-management')">
                         {{ __('Course Management') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('discount') }}" :active="request()->routeIs('discount')">
+                        {{ __('Discount') }}
+                    </x-jet-nav-link>
                     @endif
+
+                    {{-- user --}}
                     @if (Auth::user()->role == "user")
                     <x-jet-nav-link href="{{ route('offer') }}" :active="request()->routeIs('offer')">
                         {{ __('Offers') }}
                     </x-jet-nav-link>
                     @endif
 
+                    {{-- admin --}}
                     @if (Auth::user()->role == 'admin')
                     <x-jet-nav-link href="{{ route('user') }}" :active="request()->routeIs('user')">
                         {{ __('Users') }}
@@ -35,6 +43,9 @@
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('testimonial-management') }}" :active="request()->routeIs('testimonial-management')">
                         {{ __('Testimonials') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('discount') }}" :active="request()->routeIs('discount')">
+                        {{ __('Discount') }}
                     </x-jet-nav-link>
 
                     <div class="hidden sm:flex sm:items-center sm:ml-6">

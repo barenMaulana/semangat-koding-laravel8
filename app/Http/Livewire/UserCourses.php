@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Course;
 use App\Models\CourseUser;
 use App\Models\Invoice;
+use App\Models\DiscountCode;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,8 @@ class UserCourses extends Component
             $courseTitle,
             $courseId,
             $search,
-            $idCourseRow;
+            $idCourseRow,
+            $discount_code;
 
     public $openButton = false;
     public $isModal = false;
@@ -67,6 +69,7 @@ class UserCourses extends Component
         $this->userEmail = '';
         $this->courseTitle = '';
         $this->courseId = '';
+        $this->discount_code = '';
         $this->openButton = false;
         $this->deleteId = false;
     }
@@ -84,6 +87,7 @@ class UserCourses extends Component
         $pesan = $this->isEnroll($this->userEmail,$this->courseId);
         if($pesan == ""){
             $pesan = "enroll success";
+            $messageType = "message";
             
             $this->validate([
                 'userEmail' => 'required|email',
@@ -102,10 +106,30 @@ class UserCourses extends Component
             // create invoice
             $this->createInvoice($this->userEmail,$this->courseId);
 
+            // check discount
+            $course = Course::find($this->courseId);
+            $mentor = User::find($course->user_id);
+
+            $discount;
+            $discount_amount = 0;
+            if($this->discount_code != null){
+                $discount = DiscountCode::where('unique_code',$this->discount_code)
+                                        ->where('course_id',$this->courseId)
+                                        ->where('status','active')
+                                        ->first();
+                if($discount == null){
+                    DB::rollBack(); 
+                    $pesan = "Discount code cannot be used";
+                    $messageType = "errMessage";
+                }
+
+                // discount
+                $discount_amount = $course->price * $discount->discount_percentage / 100;
+            }
+
             // saldo update for mentor
-                $course = Course::find($this->courseId);
-                $mentor = User::find($course->user_id);
-                $mentor->saldo = $course->price * $mentor->percentage / 100 + $mentor->saldo;
+                $course_price_amount = $course->price - $discount_amount;
+                $mentor->saldo = $course_price_amount * $mentor->percentage / 100 + $mentor->saldo;
                 $mentor->save();
 
                 DB::commit();
@@ -113,7 +137,7 @@ class UserCourses extends Component
                 DB::rollback();
             }
             $this->resetFields();
-            session()->flash('message', $pesan);
+            session()->flash($messageType, $pesan);
         }else{
             session()->flash('errMessage', $pesan);
         }

@@ -34,11 +34,16 @@ class Course extends Model
         'bankName1',
         'payment_account1',
         'payment_account_name1',
-        'user_id'
+        'user_id',
     ];
 
     public function courseVideo()
     {
         return $this->hasOne(CourseVideo::class,'course_title','slug');
+    }
+
+    public function discount()
+    {
+        return $this->hasMany(DiscountCode::class);
     }
 }

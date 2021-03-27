@@ -18,6 +18,7 @@ use App\Http\Livewire\CourseManagement;
 use App\Http\Livewire\Approval;
 use App\Http\Livewire\Testimonials;
 use App\Http\Livewire\TestimonialManagements;
+use App\Http\Livewire\Discount;
 
 // app
 Route::get('/', App::class)->name('/');
@@ -47,6 +48,8 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function () {
     Route::get('/testimonial-management',TestimonialManagements::class)->name('testimonial-management');
 });
 
+// mentor rooms
 Route::middleware(['auth:sanctum','verified','mentor'])->group(function(){
     Route::get('mentor/course-management',CourseManagement::class)->name('course-management');
+    Route::get('/discount',Discount::class)->name('discount');
 });

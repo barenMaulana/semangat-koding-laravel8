@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPercentageColumnToUsersTable extends Migration
+class AddDiscountColumnToCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddPercentageColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer("percentage")->default(20);
+        Schema::table('courses', function (Blueprint $table) {
+            $table->integer("discount")->default(0);
         });
     }
 
@@ -25,8 +25,8 @@ class AddPercentageColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('percentage');
+        Schema::table('courses', function (Blueprint $table) {
+            $table->dropColumn('discount');
         });
     }
 }

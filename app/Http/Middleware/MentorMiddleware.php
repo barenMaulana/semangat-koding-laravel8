@@ -17,7 +17,7 @@ class MentorMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->role != "mentor")
+        if(Auth::user()->role != "mentor" && Auth::user()->role != "admin")
         {
             return redirect('/dashboard');
         }

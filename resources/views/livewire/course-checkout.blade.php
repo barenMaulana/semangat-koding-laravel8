@@ -33,11 +33,40 @@
                                     @endif
                                 @endif
                             </p>
+                            <p>
+                                @if (session()->has('message'))
+                                    <div class="alert alert-success">
+                                        <div class="d-flex">
+                                            <div>
+                                                <p class="text-sm">{{ session('message') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if (session()->has('errMessage'))
+                                    <div class="alert alert-danger">
+                                        <div class="d-flex">
+                                            <div>
+                                                <p class="text-sm">{{ session('errMessage') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            </p>
+                            <p>
+                                <div class="form-group">
+                                    <label for="discount">Kode Diskon</label>
+                                    <div class="d-flex">
+                                        <input wire:model="discount_code" type="text" id="discount" class="form-control form-control mx-sm-3">
+                                        <button wire:click="checkDiscountCode()" class="btn btn-info">Gunakan</button>
+                                    </div>
+                                </div>
+                            </p>
                         </div>
                         @if ($course->type == "premium")                            
                             <div class="collapse my-2" id="collapseConfirm">
                                 <div class="card card-body" style="border:none;">
-                                    <a href="https://api.whatsapp.com/send?phone={{$course->phone_number}}&text=Halo,%20Saya%20sudah%20melakukan%20pembayaran%20kelas%20{{$course->title}}.%20Dengan%20email%20=%20{{Auth::user()->email}},%20Berikut%20saya%20lampirkan%20foto%20bukti%20pembayaran:" 
+                                    <a href="https://api.whatsapp.com/send?phone={{$course->phone_number}}&text=Halo,%20Saya%20sudah%20melakukan%20pembayaran%20kelas%20{{$course->title}}.%20Dengan%20email%20=%20{{Auth::user()->email}}{{$discount_amount != 0 ? ",%20dan%20dengan%20kode%20diskon%20:%20".$use_discount_confirmation : ""}},%20Berikut%20saya%20lampirkan%20foto%20bukti%20pembayaran:" 
                                         class="btn text-white" type="button" style="background-color: #12ff61" target="_blank">
                                         Konfirmasi
                                     </a>
@@ -48,7 +77,8 @@
                                 <h5 class="card-title">Pembayaran</h5>
                                 <ul class="list-group" style="border:none;">
                                     <li class="d-flex justify-content-between"><span>harga : </span><span class="text-dark">Rp.{{number_format($course->price)}}</span></li>
-                                    <li class="d-flex justify-content-between"><span>Total : </span><span class="text-dark"><u>Rp.{{number_format($course->price)}}</u></span></li>
+                                    <li class="d-flex justify-content-between"><span>diskon : </span><span class="text-dark">Rp.{{number_format($discount_amount)}}</span></li>
+                                    <li class="d-flex justify-content-between"><span>Total : </span><span class="text-dark"><u>Rp.{{number_format($price_amount)}}</u></span></li>
                                     <hr>
                                     <h6 class="card-title">Transfer Pembayaran</h6>
                                     <div class="p-2" style="border-radius: 5px;background-color:#bcffd5b9;">

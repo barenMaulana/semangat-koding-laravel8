@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Testimonial;
+use App\Models\DiscountCode;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -77,5 +78,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function testimonial()
     {
         return $this->hasOne(Testimonial::class);
+    }
+
+    public function discount()
+    {
+        return $this->hasMany(DiscountCode::class);
     }
 }
