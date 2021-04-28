@@ -21,8 +21,14 @@
                     <x-jet-nav-link href="{{ route('course-management') }}" :active="request()->routeIs('course-management')">
                         {{ __('Course Management') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('discount') }}" :active="request()->routeIs('discount')">
-                        {{ __('Discount') }}
+                    <x-jet-nav-link href="{{ route('discounts') }}" :active="request()->routeIs('discounts')">
+                        {{ __('Discounts') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('course-videos') }}" :active="request()->routeIs('course-videos')">
+                        {{ __('Course Videos') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('mentor-tutorials') }}" :active="request()->routeIs('mentor-tutorials')">
+                        {{ __('Tutorial') }}
                     </x-jet-nav-link>
                     @endif
 
@@ -35,17 +41,17 @@
 
                     {{-- admin --}}
                     @if (Auth::user()->role == 'admin')
-                    <x-jet-nav-link href="{{ route('user') }}" :active="request()->routeIs('user')">
+                    <x-jet-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
                         {{ __('Users') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('approvals') }}" :active="request()->routeIs('approvals')">
                         {{ __('Approvals') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('testimonial-management') }}" :active="request()->routeIs('testimonial-management')">
+                    <x-jet-nav-link href="{{ route('testimonial-managements') }}" :active="request()->routeIs('testimonial-managements')">
                         {{ __('Testimonials') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('discount') }}" :active="request()->routeIs('discount')">
-                        {{ __('Discount') }}
+                    <x-jet-nav-link href="{{ route('discounts') }}" :active="request()->routeIs('discounts')">
+                        {{ __('Discounts') }}
                     </x-jet-nav-link>
 
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -65,8 +71,7 @@
                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                     {{ __('Course Management') }}
                                 </div>
-
-                                <x-jet-dropdown-link href="{{ route('course') }}">
+                                <x-jet-dropdown-link href="{{ route('courses') }}">
                                     {{ __('Courses') }}
                                 </x-jet-dropdown-link>
                                 <x-jet-dropdown-link href="{{ route('access') }}">

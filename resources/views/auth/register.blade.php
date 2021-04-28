@@ -31,7 +31,7 @@
 
             <div class="mt-4">
                 <x-jet-label for="Expertise" value="{{ __('Expertise') }}" />
-                <x-jet-input id="Expertise" class="block mt-1 w-full" type="text" name="expertise" required autocomplete="expertise" />
+                <x-jet-input id="Expertise" class="block mt-1 w-full" type="text" name="expertise" required autocomplete="expertise" placeholder="web developer"/>
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

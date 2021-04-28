@@ -80,7 +80,7 @@
           <div class="row">
             @forelse ($courses as $row)
               <div class="col-sm-6 col-lg-4 pb-lg-6 px-lg-2 pb-4">
-                <a href="{{url('kelas/'.$row->slug)}}" class="card py-4 shadow-sm h-100" style="text-decoration: none;outline: none;">
+                <a href="{{url('class/'.$row->slug)}}" class="card py-4 shadow-sm h-100" style="text-decoration: none;outline: none;">
                   <div class="text-center px-4">
                     <img src="{{asset('storage/'.$row->thumbnail_file_name)}}" class="img-fluid rounded" alt="semangat koding" />
                     <div class="card-body px-2">
@@ -148,7 +148,7 @@
                   @forelse ($testimonials as $item)
                     <div class="col-md-4 mb-8 mb-md-0">
                       <div class="card card-span h-100 shadow-lg">
-                        <div class="card-span-img"><img src="{{ asset('storage/'.$item->user->profile_photo_path)}}" alt="" class="img-fluid rounded-circle" style="height: 120px;"/></div>
+                        <div class="card-span-img"><img src="{{ asset('storage/'.$item->user->profile_photo_path)}}" alt="" class="img-fluid rounded-circle" style="height: 100px;width:100px;"/></div>
                         <div class="card-body d-flex flex-column flex-center py-6">
                           <div class="my-4">
                             <ul class="list-unstyled list-inline">

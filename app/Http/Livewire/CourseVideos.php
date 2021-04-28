@@ -6,6 +6,7 @@ use App\Models\Course;
 use Illuminate\Support\Str;
 use App\Models\CourseVideo;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 
 
 class CourseVideos extends Component
@@ -28,16 +29,33 @@ class CourseVideos extends Component
     public function render()
     {   
         $courses = [];
-        $courseVideos = CourseVideo::latest()->limit(10)->simplePaginate(5);
+        if (Auth::user()->role == "admin") {
+            $courseVideos = CourseVideo::latest()->limit(10)->simplePaginate(5);
+        }else{
+            $courseVideos = CourseVideo::where('user_id',Auth::user()->id)->latest()->limit(10)->simplePaginate(5);
+        }
 
         if ($this->search !== null) {
-            $courseVideos = CourseVideo::where('course_title', 'like', '%' . $this->search . '%')
-                            ->latest()
-                            ->simplePaginate(5);
+            if (Auth::user()->role == "admin") {
+                $courseVideos = CourseVideo::where('course_title', 'like', '%' . $this->search . '%')
+                ->latest()
+                ->simplePaginate(5);
+            }else{
+                $courseVideos = CourseVideo::where('course_title', 'like', '%' . $this->search . '%')
+                ->where('user_id', Auth::user()->id)
+                ->latest()
+                ->simplePaginate(5);
+            }
         }
 
         if ($this->courseTitle != null){
-            $courses = Course::where('title', 'like', '%' . $this->courseTitle . '%')->get();
+            if (Auth::user()->role == "admin") {
+                $courses = Course::where('title', 'like', '%' . $this->courseTitle . '%')->get();
+            }else{
+                $courses = Course::where('title', 'like', '%' . $this->courseTitle . '%')
+                ->where('user_id',Auth::user()->id)
+                ->get();
+            }
         }
 
         if($this->courseTitle != null)

@@ -22,9 +22,9 @@ use App\Http\Livewire\Discount;
 
 // app
 Route::get('/', App::class)->name('/');
-Route::get('/kelas', Kelas::class)->name('kelas');
-Route::get('/testimonials', Testimonials::class)->name('testimoials');
-Route::get('/kelas/{post}', TrailerKelas::class);
+Route::get('/class', Kelas::class)->name('class');
+Route::get('/testimonials', Testimonials::class)->name('testimonials');
+Route::get('/class/{post}', TrailerKelas::class);
 
 // dashboard admin & users
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
@@ -40,16 +40,19 @@ Route::middleware(['auth:sanctum', 'verified', 'fetchUser'])->group(function (){
 
 // admin rooms
 Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function () {
-    Route::get('/course',Courses::class)->name('course');
-    Route::get('/course-videos',CourseVideos::class)->name('course-videos');
-    Route::get('/user',Users::class)->name('user');
+    Route::get('/courses',Courses::class)->name('courses');
+    Route::get('/users',Users::class)->name('users');
     Route::get('/access',UserCourses::class)->name('access');
     Route::get('/approvals',Approval::class)->name('approvals');
-    Route::get('/testimonial-management',TestimonialManagements::class)->name('testimonial-management');
+    Route::get('/testimonial-managements',TestimonialManagements::class)->name('testimonial-managements');
 });
 
 // mentor rooms
 Route::middleware(['auth:sanctum','verified','mentor'])->group(function(){
     Route::get('mentor/course-management',CourseManagement::class)->name('course-management');
-    Route::get('/discount',Discount::class)->name('discount');
+    Route::get('/discounts',Discount::class)->name('discounts');
+    Route::get('/course-videos',CourseVideos::class)->name('course-videos');
+    Route::get('/mentor-tutorials',function(){
+        return view('tutorial-mentor');
+    })->name('mentor-tutorials');
 });

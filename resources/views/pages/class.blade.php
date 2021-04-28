@@ -18,7 +18,7 @@
           <div class="row">
             @forelse ($courses as $row)
             <div class="col-sm-6 col-lg-4 pb-lg-6 px-lg-2 pb-4">
-              <a href="{{url('kelas/'.$row->slug)}}" class="card py-4 shadow-sm h-100" style="text-decoration: none;outline: none;">
+              <a href="{{url('class/'.$row->slug)}}" class="card py-4 shadow-sm h-100" style="text-decoration: none;outline: none;">
                 <div class="text-center px-4">
                   <img src="{{asset('storage/'.$row->thumbnail_file_name)}}" class="img-fluid rounded" alt="semangat koding" />
                   <div class="card-body px-2">

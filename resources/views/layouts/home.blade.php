@@ -43,7 +43,7 @@
         <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
             <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="{{ url('/') }}">Home</a></li>
-            <li class="nav-item px-2"><a class="nav-link fw-medium" href="{{ url('/kelas') }}">Kelas</a></li>
+            <li class="nav-item px-2"><a class="nav-link fw-medium" href="{{ url('/class') }}">Class</a></li>
           </ul>
           @guest
             <a href="{{ url('/login') }}" class="btn btn-lg btn-info rounded-pill bg-gradient order-0" type="submit">Masuk</a>&nbsp;

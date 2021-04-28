@@ -7,7 +7,7 @@
         $os = explode(',',$course->operating_system);
 
         $blur = "";
-        if($course->type == "free"){
+        if($course->type == "free") {
             $blur = "filter: blur(4px)";
         }
     @endphp
@@ -57,17 +57,17 @@
                     <h6 class="fs-3 fs-lg-2 lh-sm mb-3 text-secondary">Improvements :</h6>
                     <div class="card text-center" style="border: none">
                         <div class="card-body">
-                            <div class="row row-cols-1 row-cols-md-4 g-2 d-flex justify-content-center">
-                                <div class="col">
+                            <div class="row row-cols-4 overflow-auto row-cols-md-4 g-2 d-flex justify-content-center">
+                                <div class="col-5 col-md-3 col-lg-3">
                                     <img src="{{asset($certificateImage)}}" class="figure-img img-fluid" style="border-radius: 15px;{{$blur}};" width="150" alt="">
                                 </div>
-                                <div class="col">
+                                <div class="col-5 col-md-3 col-lg-3">
                                     <img src="{{asset($consultationImage)}}"class="figure-img img-fluid" style="border-radius: 15px;{{$blur}};" width="150" alt="">
                                 </div>
-                                <div class="col">
+                                <div class="col-5 col-md-3 col-lg-3">
                                     <img src="{{asset($updateImage)}}"class="figure-img img-fluid" style="border-radius: 15px;" width="150" alt="">
                                 </div>
-                                <div class="col">
+                                <div class="col-5 col-md-3 col-lg-3">
                                     <img src="{{asset($sourceImage)}}" class="figure-img img-fluid" style="border-radius: 15px;{{$blur}};" width="150" alt="">
                                 </div>
                               </div>
